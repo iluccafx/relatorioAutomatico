@@ -3,12 +3,12 @@
 Envio automático de relatório semanal via email
 
 Bibliotecas utilizadas: 
--os 
--selenium
--win32com.client 
--pythoncom 
--time 
--datetime
+os; 
+selenium; 
+win32com.client; 
+pythoncom; 
+time; 
+datetime
 
 Funcionalidades:
 -Acessa o sistema da empresa, inserindo login e senha;
