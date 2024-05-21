@@ -24,65 +24,49 @@ def lastSunday():
 
     today = datetime.now().date()
     todayWeekday = today.weekday()
-    if todayWeekday == 0:
-        days = 1
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-    elif todayWeekday == 1:
-        days = 2
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-    elif todayWeekday == 2:
-        days = 3
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-    elif todayWeekday == 3:
-        days = 4
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-    elif todayWeekday == 4:
-        days = 5
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-    elif todayWeekday == 5:
-        days = 6
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-    elif todayWeekday == 6:
-        days = 7
-        sunday = today - timedelta(days=days)
-        sunday = sunday.strftime('%d/%m/%Y')
-        return sunday
-
-# function that returns the current time
-def currentTime():
-
-    rightNow = datetime.now().hour
-
-    if 0 <= rightNow < 12:
-        rightNow = "Bom dia!"
     
-    elif 12 <= rightNow < 18:
-        rightNow = "Boa tarde!"
-    
-    else:
-        rightNow = "Boa noite!"
-
-    return rightNow
+    match todayWeekday:
+        case 0:
+            days = 1
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
+        case 1:
+            days = 2
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
+        case 2:
+            days = 3
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
+        case 3:
+            days = 4
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
+        case 4:
+            days = 5
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
+        case 5:
+            days = 6
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
+        case 6:
+            days = 7
+            sunday = today - timedelta(days=days)
+            sunday = sunday.strftime('%d/%m/%Y')
+            return sunday
 
 # function that sends the email with the attached file
 def sendEmail():
     
     # initializes COM library
     pythoncom.CoInitialize()
-    
-    now = currentTime()
     
     try:
         # creating integration with outlook
@@ -92,10 +76,10 @@ def sendEmail():
         email = outlook.CreateItem(0)
         
         # configuring email information
-        email.To = "luccaoliveira11@gmail.com"
+        email.To = "iluccafx@hotmail.com"
         email.Subject = f'Relatório Mapa RH - {startDate} a {endDate}'
         email.HTMLBody = f'''
-        <p>{now}</p> 
+        <p>Bom dia!</p> 
 
         <p>Segue em anexo Relatório de Mapeamento referente a semana anterior.</p>
 
@@ -162,8 +146,8 @@ try:
     os.remove(file)
     print(f"'{file}' successfully deleted!")
 except FileNotFoundError:
-    print(f"error: '{file}' not found.")
+    print(f"Error: '{file}' not found.")
 except PermissionError:
-    print(f"error: permission denied to delete '{file}'.")
+    print(f"Error: permission denied to delete '{file}'.")
 except Exception as e:
-    print(f"an error occurred when trying to delete the file: {e}")
+    print(f"An error occurred when trying to delete the file: {e}")
