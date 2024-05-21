@@ -76,7 +76,7 @@ def sendEmail():
         email = outlook.CreateItem(0)
         
         # configuring email information
-        email.To = "iluccafx@hotmail.com"
+        email.To = "Email do destinatário"
         email.Subject = f'Relatório Mapa RH - {startDate} a {endDate}'
         email.HTMLBody = f'''
         <p>Bom dia!</p> 
